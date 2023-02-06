@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage("test") {
             steps{
-                sh 'ls -l'
+               result = sh(returnStdOut: true, script: " set +x; ls -l")
             }
         }
     }
