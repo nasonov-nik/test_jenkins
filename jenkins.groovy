@@ -2,11 +2,11 @@
 pipeline {
     agent {
         label 'master'
-
-        options{
-            skipStagesAfterUnstable()
-        }
     }
+    options{
+        skipStagesAfterUnstable()
+    }
+
     stages {
         stage("test") {
             steps{
