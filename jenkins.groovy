@@ -1,7 +1,6 @@
-#!groovy
 pipeline {
     agent any
-    options{
+    options {
         skipStagesAfterUnstable()
     }
 
