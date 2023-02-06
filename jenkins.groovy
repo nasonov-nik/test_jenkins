@@ -1,5 +1,8 @@
+#!groovy
 pipeline {
-    agent any
+    agent {
+        label 'master'
+    }
     options {
         skipStagesAfterUnstable()
     }
