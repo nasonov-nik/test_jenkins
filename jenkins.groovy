@@ -1,10 +1,9 @@
 #!groovy
 pipeline {
-    agent {
-        label 'master'
-    }
+    agent any
     options {
-        skipStagesAfterUnstable()
+        skipStagesAfterUnstable(),
+        timestamp()
     }
 
     stages {
