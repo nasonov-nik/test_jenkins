@@ -2,7 +2,7 @@
 pipeline {
     agent any
     options {
-        skipStagesAfterUnstable(),
+        skipStagesAfterUnstable()
         timestamp()
     }
 
