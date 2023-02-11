@@ -11,11 +11,12 @@ pipeline {
         stage("Обычный sh") {
             steps {
                 sh "ls -l"
+
             }
         }
         stage("sh с сохранением"){
             steps{
-                result = ${sh(returnStdOut: true, script: " set +x; ls -l")}
+                echo "env.BRANCH_NAME"
             }
         }
     }
