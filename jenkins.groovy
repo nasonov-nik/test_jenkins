@@ -16,9 +16,12 @@ pipeline {
         }
         stage("sh с сохранением"){
             steps{
-                println(env.BRANCH_NAME)
-                project_version = sh script: "set +x; ls -l", returnStdOut: true
-                println(project_version)
+                script {
+                    GIT_COMMIT_EMAIL = sh (
+                            script: 'ls -l',
+                            returnStdout: true
+                    ).trim()
+                }
 
             }
         }
