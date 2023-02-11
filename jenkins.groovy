@@ -1,4 +1,5 @@
-#!groovy
+#!/usr/bin/env groovy
+
 pipeline {
     agent any
     options {
@@ -7,9 +8,19 @@ pipeline {
     }
 
     stages {
-        stage("test") {
+        stage("Обычный sh") {
+            steps {
+                sh "ls -l"
+            }
+        }
+        stage("sh с сохранением"){
             steps{
-               result = sh(returnStdOut: true, script: " set +x; ls -l")
+                result = ${sh(returnStdOut: true, script: " set +x; ls -l")}
+            }
+        }
+        stage("Груви скрипт"){
+            staps{
+
             }
         }
     }
