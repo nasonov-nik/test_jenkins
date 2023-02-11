@@ -18,10 +18,5 @@ pipeline {
                 result = ${sh(returnStdOut: true, script: " set +x; ls -l")}
             }
         }
-        stage("Груви скрипт"){
-            staps{
-
-            }
-        }
     }
 }
