@@ -16,7 +16,7 @@ pipeline {
         }
         stage("sh с сохранением"){
             steps{
-                echo "env.BRANCH_NAME"
+                println(${env.BRANCH_NAME})
             }
         }
     }
