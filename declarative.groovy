@@ -6,19 +6,31 @@ pipeline {
         skipStagesAfterUnstable()
         timestamps()
     }
+    environment{
+        def STAND = ""
+        def TASKS = []
+    }
 
     stages {
         stage("Обработка параметров"){
             steps{
-                println("тип задачи, ${env.TASK_TYPE}")
-                println("change_hostname, ${change_hostname}")
+                STAND = env.TASK_TYPE
+                if (env.change_hostname){
+                    TASKS.add("change_hostname")
+                }
+                if (env.get_hostname){
+                    TASKS.add("get_hostname")
+                }
+
+                println("тип задачи, ${STAND}")
+                println("change_hostname, ${TASKS}")
             }
         }
-        stage("Обычный sh") {
-            steps {
-                sh "ls -l"
-            }
-        }
+//        stage("Обычный sh") {
+//            steps {
+//                sh "ls -l"
+//            }
+//        }
 
         stage("sh с сохранением") {
                 steps{
