@@ -11,18 +11,17 @@ pipeline {
         stage("Обычный sh") {
             steps {
                 sh "ls -l"
-
             }
         }
 
-        stage ("sh с сохранением") {
-            withCredentials([sshUserPrivateKey(credentialsId: "yourkeyid", keyFileVariable: 'keyfile')]) {
+        stage("sh с сохранением") {
                 steps{
-                    script {
-                        remote_host = sh (
+                    withCredentials([sshUserPrivateKey(credentialsId: "yourkeyid", keyFileVariable: 'keyfile')]) {
+                        script {
+                            remote_host = sh (
                                 script: ' ssh -o StrictHostKeyChecking=no -i ${keyfile} osboxes@192.168.59.102 \'hostname\'',
                                 returnStdout: true
-                        ).trim()
+                            ).trim()
                         println(remote_host)
                     }
                 }
