@@ -6,12 +6,12 @@ pipeline {
         skipStagesAfterUnstable()
         timestamps()
     }
-
+    environment{
+        STAND = ""
+        TASKS = []
+    }
     stages {
-        environment{
-            STAND = ""
-            TASKS = []
-        }
+
         stage("Обработка параметров"){
             steps{
                 env.STAND = env.TASK_TYPE
