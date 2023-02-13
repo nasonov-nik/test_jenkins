@@ -8,6 +8,12 @@ pipeline {
     }
 
     stages {
+        stage("Обработка параметров"){
+            steps{
+                println("тип задачи, ${TASK_TYPE}")
+                println("change_hostname, ${change_hostname}")
+            }
+        }
         stage("Обычный sh") {
             steps {
                 sh "ls -l"
