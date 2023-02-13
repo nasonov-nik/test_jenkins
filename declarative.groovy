@@ -10,18 +10,21 @@ pipeline {
     stages {
         stage("Обработка параметров"){
             steps{
-                def STAND = env.TASK_TYPE
-                def TASKS = []
-                if (env.change_hostname == true){
-                    TASKS.add("change_hostname")
-                }
+                script{
+                    def STAND = env.TASK_TYPE
+                    def TASKS = []
 
-                if (env.get_hostname == true){
-                    TASKS.add("get_hostname")
-                }
+                    if (env.change_hostname == true){
+                        TASKS.add("change_hostname")
+                    }
 
-                println("тип задачи, ${STAND}")
-                println("change_hostname, ${TASKS}")
+                    if (env.get_hostname == true){
+                        TASKS.add("get_hostname")
+                    }
+
+                    println("тип задачи, ${STAND}")
+                    println("change_hostname, ${TASKS}")
+                }
             }
         }
 //        stage("Обычный sh") {
