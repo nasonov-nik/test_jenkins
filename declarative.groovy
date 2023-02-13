@@ -1,7 +1,29 @@
-node {
+#!/usr/bin/env groovy
 
-    stage("check host") {
-        lol = sh(script: "ssh jenkins@192.168.59.102 \'hostname\'", returnStdOut: true)
-        println(lol)
+pipeline {
+    agent any
+    options {
+        skipStagesAfterUnstable()
+        timestamps()
+    }
+
+    stages {
+        stage("Обычный sh") {
+            steps {
+                sh "ls -l"
+
+            }
+        }
+        stage("sh с сохранением"){
+            steps{
+                script {
+                    GIT_COMMIT_EMAIL = sh (
+                            script: 'ls -l',
+                            returnStdout: true
+                    ).trim()
+                }
+
+            }
+        }
     }
 }
