@@ -10,17 +10,21 @@ pipeline {
     stages {
         stage("Обработка параметров"){
             environment{
-                STAND = ""
+                STAND = null
                 TASKS = []
             }
             steps{
                 env.STAND = env.TASK_TYPE
                 if (env.change_hostname == true){
                     env.TASKS.add("change_hostname")
+                } else {
+                    println("lol")
                 }
 
                 if (env.get_hostname == true){
                     TASKS.add("get_hostname")
+                } else {
+                    println("lol")
                 }
 
                 println("тип задачи, ${STAND}")
