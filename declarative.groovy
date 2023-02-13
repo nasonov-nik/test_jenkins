@@ -14,11 +14,11 @@ pipeline {
                     def STAND = env.TASK_TYPE
                     def TASKS = []
 
-                    if (env.change_hostname == true){
-                        TASKS.add("change_hostname")
+                    if (env.change_hostname){
+                        TASKS += "change_hostname"
                     }
 
-                    if (env.get_hostname == true){
+                    if (env.get_hostname){
                         TASKS.add("get_hostname")
                     }
 
