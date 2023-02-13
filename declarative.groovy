@@ -8,13 +8,15 @@ pipeline {
     }
 
     stages {
-        def STAND = ""
-        def TASKS = []
+        environment{
+            def STAND = ""
+            def TASKS = []
+        }
         stage("Обработка параметров"){
             steps{
-                STAND = env.TASK_TYPE
+                env.STAND = env.TASK_TYPE
                 if (env.change_hostname == true){
-                    TASKS.add("change_hostname")
+                    env.TASKS.add("change_hostname")
                 }
                 if (env.get_hostname == true){
                     TASKS.add("get_hostname")
