@@ -18,7 +18,7 @@ pipeline {
             steps{
                 script {
                     remote_host = sh (
-                            script: ' ssh osboxes@192.168.59.102 \'hostname\'',
+                            script: ' ssh -o StrictHostKeyChecking=no osboxes@192.168.59.102 \'hostname\'',
                             returnStdout: true
                     ).trim()
                     println(remote_host)
