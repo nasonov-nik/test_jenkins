@@ -1,8 +1,7 @@
-import groovy.xml.MarkupBuilder
-def list = ["lol","pop","bob","sort","iops"]
+node {
 
-println(list)
-println(list.pop())
-println(list.pop())
-println(list.pop())
-println(list[0])
+    stage("check host") {
+        lol = sh(script: "ssh jenkins@192.168.59.102 \'hostname\'", returnStdOut: true)
+        println(lol)
+    }
+}
