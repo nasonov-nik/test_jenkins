@@ -1,0 +1,21 @@
+1. получить статус список виртуальных машин
+VBoxManage list vms
+
+2. проверить статус виртуальных машин
+VBoxManage list runningvms
+
+3. запуск виртуальной машины - VBoxManage startvm "{name_vm}" --type headless
+
+4. Поставить на паузу виртуальную машину
+VBoxManage controlvm "{name_vm}" pause
+
+5. Вывести из паузы
+VBoxManage controlvm "{name_vm}" resume
+
+6. для выключения
+VBoxManage controlvm "{name_vm}" poweroff
+
+7. Состояние конкретной виртуальной машины
+VBoxManage showvminfo "{name_vm}" | grep State
+
+информацмия взята с сайта - https://losst.pro/komandy-konsoli-virtualbox
