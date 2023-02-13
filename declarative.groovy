@@ -14,8 +14,9 @@ pipeline {
 
             }
         }
-        withCredentials([sshUserPrivateKey(credentialsId: "yourkeyid", keyFileVariable: 'keyfile')]) {
-            stage("sh с сохранением"){
+
+        stage ("sh с сохранением") {
+            withCredentials([sshUserPrivateKey(credentialsId: "yourkeyid", keyFileVariable: 'keyfile')]) {
                 steps{
                     script {
                         remote_host = sh (
@@ -24,7 +25,6 @@ pipeline {
                         ).trim()
                         println(remote_host)
                     }
-
                 }
             }
         }
