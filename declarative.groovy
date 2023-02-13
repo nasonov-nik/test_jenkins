@@ -6,18 +6,20 @@ pipeline {
         skipStagesAfterUnstable()
         timestamps()
     }
+
     environment{
         STAND = ""
         TASKS = []
     }
-    stages {
 
+    stages {
         stage("Обработка параметров"){
             steps{
                 env.STAND = env.TASK_TYPE
                 if (env.change_hostname == true){
                     env.TASKS.add("change_hostname")
                 }
+
                 if (env.get_hostname == true){
                     TASKS.add("get_hostname")
                 }
