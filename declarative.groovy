@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage("Обработка параметров"){
             steps{
-                println("тип задачи, ${TASK_TYPE}")
+                println("тип задачи, ${env.TASK_TYPE}")
                 println("change_hostname, ${change_hostname}")
             }
         }
