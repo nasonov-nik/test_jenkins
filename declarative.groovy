@@ -17,10 +17,11 @@ pipeline {
         stage("sh с сохранением"){
             steps{
                 script {
-                    GIT_COMMIT_EMAIL = sh (
-                            script: 'ls -l',
+                    remote_host = sh (
+                            script: ' ssh osboxes@192.168.59.102 \'hostname\'',
                             returnStdout: true
                     ).trim()
+                    println(remote_host)
                 }
 
             }
