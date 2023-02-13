@@ -19,7 +19,7 @@ pipeline {
                     withCredentials([sshUserPrivateKey(credentialsId: "osboxes", keyFileVariable: 'keyfile')]) {
                         script {
                             remote_host = sh (
-                                script: ' ssh -o StrictHostKeyChecking=no -i ${keyfile} osboxes@192.168.59.102 \'hostname\'',
+                                script: ' ssh -o StrictHostKeyChecking=no -i ${keyfile} root@192.168.59.102 \'hostnamectl set-hostname opensuse\'',
                                 returnStdout: true
                             ).trim()
                         println(remote_host)
