@@ -9,8 +9,8 @@ pipeline {
 
     stages {
         environment{
-            def STAND = ""
-            def TASKS = []
+            STAND = ""
+            TASKS = []
         }
         stage("Обработка параметров"){
             steps{
