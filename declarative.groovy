@@ -6,19 +6,17 @@ pipeline {
         skipStagesAfterUnstable()
         timestamps()
     }
-    environment{
-        def STAND = ""
-        def TASKS = []
-    }
 
     stages {
+        def STAND = ""
+        def TASKS = []
         stage("Обработка параметров"){
             steps{
                 STAND = env.TASK_TYPE
-                if (env.change_hostname){
+                if (env.change_hostname == true){
                     TASKS.add("change_hostname")
                 }
-                if (env.get_hostname){
+                if (env.get_hostname == true){
                     TASKS.add("get_hostname")
                 }
 
