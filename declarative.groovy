@@ -10,8 +10,8 @@ pipeline {
     stages {
         stage("Обработка параметров"){
             environment{
-                STAND = null
-                TASKS = []
+                STAND = ""
+                TASKS = ["1"]
             }
             steps{
                 env.STAND = env.TASK_TYPE
