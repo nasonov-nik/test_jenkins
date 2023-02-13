@@ -7,13 +7,12 @@ pipeline {
         timestamps()
     }
 
-    environment{
-        STAND = ""
-        TASKS = []
-    }
-
     stages {
         stage("Обработка параметров"){
+            environment{
+                STAND = ""
+                TASKS = []
+            }
             steps{
                 env.STAND = env.TASK_TYPE
                 if (env.change_hostname == true){
