@@ -15,11 +15,19 @@ pipeline {
                     def TASKS = []
 
                     if (env.change_hostname){
-                        TASKS += "change_hostname"
+                        TASKS.add("change_hostname")
                     }
 
                     if (env.get_hostname){
                         TASKS.add("get_hostname")
+                    }
+
+                    if (env.get_cpu){
+                        TASKS.add("get_cpu")
+                    }
+
+                    if (env.get_mem){
+                        TASKS.add("get_mem")
                     }
 
                     println("тип задачи, ${STAND}")
@@ -37,6 +45,7 @@ pipeline {
                 steps{
                     withCredentials([sshUserPrivateKey(credentialsId: "osboxes", keyFileVariable: 'keyfile')]) {
                         script {
+                            println(env.TASK)
                             remote_host = sh (
                                 script: ' ssh -o StrictHostKeyChecking=no -i ${keyfile} root@192.168.59.102 \'hostnamectl set-hostname opensuse\'',
                                 returnStdout: true
