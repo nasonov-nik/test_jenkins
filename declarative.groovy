@@ -23,7 +23,7 @@ pipeline {
                     if ( env.get_hostname == "true" ){
                         TASKS.add("get_hostname")
                         result = sh (
-                            script: 'ssh -o StrictHostKeyChecking=no -i ${keyfile} root@192.168.59.102 \'$(hostname) && $(hostname -i)\'',
+                            script: 'ssh -o StrictHostKeyChecking=no -i ${keyfile} root@192.168.59.102 \'$(hostname)\'',
                             returnStdOut: true).trim()
                     }
 
