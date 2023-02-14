@@ -27,6 +27,7 @@ pipeline {
                             result = sh (
                                     script: 'ssh -o StrictHostKeyChecking=no -i ${keyfile} root@192.168.59.102 \'cat /etc/hostname\'',
                                     returnStdOut: true)
+                            println("hostname = ${result}")
                         }
 
                         if (env.get_cpu == "true") {
