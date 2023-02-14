@@ -27,7 +27,7 @@ pipeline {
                             result = sh (
                                     script: 'ssh -o StrictHostKeyChecking=no -i ${keyfile} root@192.168.59.102 \'hostname\'',
                                     returnStdout: true)
-                            println("hostname = ${result}")
+//                            println("hostname = ${result}")
                         }
 
                         if (env.get_cpu == "true") {
@@ -35,7 +35,7 @@ pipeline {
                             result = sh (
                                     script: 'ssh -o StrictHostKeyChecking=no -i ${keyfile} root@192.168.59.102 \'lscpu\'',
                                     returnStdout: true)
-                            println(result)
+//                            println(result)
                         }
 
                         if (env.get_mem == "true") {
@@ -43,7 +43,7 @@ pipeline {
                             result = sh (
                                     script: 'ssh -o StrictHostKeyChecking=no -i ${keyfile} root@192.168.59.102 \'free -h\'',
                                     returnStdout: true)
-                            println(result)
+//                            println(result)
                         }
 
                         TASKS.each {
