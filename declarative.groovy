@@ -19,7 +19,7 @@ pipeline {
                         TASKS.add("change_hostname")
                     }
 
-                    if ( env.get_hostname is true){
+                    if ( env.get_hostname ){
                         assert env.get_hostname == true
                         TASKS.add("get_hostname")
                     }
