@@ -10,37 +10,40 @@ pipeline {
     stages {
         stage("Обработка параметров"){
             steps{
-                script{
-                    def TASKS = []
+                withCredentials([sshUserPrivateKey(credentialsId: "osboxes", keyFileVariable: 'keyfile')]) {
 
-                    if ( env.change_hostname == "true"){
-                        TASKS.add("change_hostname")
-                        result = sh (
-                            script: 'ssh -o StrictHostKeyChecking=no -i ${keyfile} root@192.168.59.102 \'hostnamectl set-hostname opensuse\'',
-                            returnStdOut: true).trim()
-                    }
+                    script {
+                        def TASKS = []
 
-                    if ( env.get_hostname == "true" ){
-                        TASKS.add("get_hostname")
-                        result = sh (
-                            script: 'ssh -o StrictHostKeyChecking=no -i ${keyfile} root@192.168.59.102 "cat /etc/hostname"',
-                            returnStdOut: true).trim()
-                    }
+                        if (env.change_hostname == "true") {
+                            TASKS.add("change_hostname")
+                            result = sh (
+                                    script: 'ssh -o StrictHostKeyChecking=no -i ${keyfile} root@192.168.59.102 \'hostnamectl set-hostname opensuse\'',
+                                    returnStdOut: true).trim()
+                        }
 
-                    if ( env.get_cpu == "true" ){
-                        TASKS.add("get_cpu")
-                        result = sh (
-                            script: 'ssh -o StrictHostKeyChecking=no -i ${keyfile} root@192.168.59.102 \'lscpu\'',
-                            returnStdOut: true).trim()
-                    }
+                        if (env.get_hostname == "true") {
+                            TASKS.add("get_hostname")
+                            result = sh (
+                                    script: 'ssh -o StrictHostKeyChecking=no -i ${keyfile} root@192.168.59.102 \'cat /etc/hostname\'',
+                                    returnStdOut: true).trim()
+                        }
 
-                    if ( env.get_mem == "true"){
-                        TASKS.add("get_mem")
-                    }
+                        if (env.get_cpu == "true") {
+                            TASKS.add("get_cpu")
+                            result = sh (
+                                    script: 'ssh -o StrictHostKeyChecking=no -i ${keyfile} root@192.168.59.102 \'lscpu\'',
+                                    returnStdOut: true).trim()
+                        }
 
-                    TASKS.each {
-                        print(it)
+                        if (env.get_mem == "true") {
+                            TASKS.add("get_mem")
+                        }
 
+                        TASKS.each {
+                            print(it)
+
+                        }
                     }
                 }
             }
