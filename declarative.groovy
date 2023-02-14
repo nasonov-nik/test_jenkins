@@ -13,22 +13,19 @@ pipeline {
                 script{
                     def TASKS = []
 
-                    if ( env.change_hostname ){
-                        println(env.change_hostnae.getClass())
-                        println(env.change_hostname == true)
-                        println(env.change_hostname == "false")
+                    if ( env.change_hostname == "true"){
                         TASKS.add("change_hostname")
                     }
 
-                    if ( env.get_hostname ){
+                    if ( env.get_hostname == "true" ){
                         TASKS.add("get_hostname")
                     }
 
-                    if ( env.get_cpu ){
+                    if ( env.get_cpu == "true" ){
                         TASKS.add("get_cpu")
                     }
 
-                    if ( env.get_mem ){
+                    if ( env.get_mem == "true"){
                         TASKS.add("get_mem")
                     }
 
