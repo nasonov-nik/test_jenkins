@@ -17,21 +17,21 @@ pipeline {
                         TASKS.add("change_hostname")
                         result = sh(
                             script: 'ssh -o StrictHostKeyChecking=no -i ${keyfile} root@192.168.59.102 \'hostnamectl set-hostname opensuse\'',
-                            returnStdOut: true)
+                            returnStdOut: true).trim()
                     }
 
                     if ( env.get_hostname == "true" ){
                         TASKS.add("get_hostname")
                         result = sh (
-                            script: 'ssh -o StrictHostKeyChecking=no -i ${keyfile} root@192.168.59.102 \'hostname && hostname -i\'',
-                            returnStdOut: true)
+                            script: 'ssh -o StrictHostKeyChecking=no -i ${keyfile} root@192.168.59.102 \'$(hostname) && $(hostname -i)\'',
+                            returnStdOut: true).trim()
                     }
 
                     if ( env.get_cpu == "true" ){
                         TASKS.add("get_cpu")
                         result = sh (
-                                script: 'ssh -o StrictHostKeyChecking=no -i ${keyfile} root@192.168.59.102 \'lscpu\'',
-                                returnStdOut: true)
+                            script: 'ssh -o StrictHostKeyChecking=no -i ${keyfile} root@192.168.59.102 \'lscpu\'',
+                            returnStdOut: true).trim()
                     }
 
                     if ( env.get_mem == "true"){
