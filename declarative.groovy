@@ -15,7 +15,7 @@ pipeline {
 
                     if ( env.change_hostname == "true"){
                         TASKS.add("change_hostname")
-                        result = sh(
+                        result = sh (
                             script: 'ssh -o StrictHostKeyChecking=no -i ${keyfile} root@192.168.59.102 \'hostnamectl set-hostname opensuse\'',
                             returnStdOut: true).trim()
                     }
@@ -23,7 +23,7 @@ pipeline {
                     if ( env.get_hostname == "true" ){
                         TASKS.add("get_hostname")
                         result = sh (
-                            script: 'ssh -o StrictHostKeyChecking=no -i ${keyfile} root@192.168.59.102 \'cat /etc/hostname\'',
+                            script: 'ssh -o StrictHostKeyChecking=no -i ${keyfile} root@192.168.59.102 "cat /etc/hostname"',
                             returnStdOut: true).trim()
                     }
 
