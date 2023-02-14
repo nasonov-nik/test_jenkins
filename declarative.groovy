@@ -8,8 +8,8 @@ pipeline {
     }
 
     stages {
-        stage("Обработка параметров"){
-            steps{
+        stage("Обработка параметров") {
+            steps {
                 withCredentials([sshUserPrivateKey(credentialsId: "osboxes", keyFileVariable: 'keyfile')]) {
 
                     script {
@@ -17,28 +17,33 @@ pipeline {
 
                         if (env.change_hostname == "true") {
                             TASKS.add("change_hostname")
-                            result = sh (
+                            result = sh(
                                     script: 'ssh -o StrictHostKeyChecking=no -i ${keyfile} root@192.168.59.102 \'hostnamectl set-hostname opensuse\'',
                                     returnStdOut: true)
                         }
 
                         if (env.get_hostname == "true") {
                             TASKS.add("get_hostname")
-                            result = sh (
-                                    script: 'ssh -o StrictHostKeyChecking=no -i ${keyfile} root@192.168.59.102 \'cat /etc/hostname\'',
+                            result = sh(
+                                    script: 'ssh -o StrictHostKeyChecking=no -i ${keyfile} root@192.168.59.102 \'hostname\'',
                                     returnStdOut: true)
                             println("hostname = ${result}")
                         }
 
                         if (env.get_cpu == "true") {
                             TASKS.add("get_cpu")
-                            result = sh (
+                            result = sh(
                                     script: 'ssh -o StrictHostKeyChecking=no -i ${keyfile} root@192.168.59.102 \'lscpu\'',
                                     returnStdOut: true)
+                            println(result)
                         }
 
                         if (env.get_mem == "true") {
                             TASKS.add("get_mem")
+                            result = sh(
+                                    script: 'ssh -o StrictHostKeyChecking=no -i ${keyfile} root@192.168.59.102 \'free -h\'',
+                                    returnStdOut: true)
+                            println(result)
                         }
 
                         TASKS.each {
