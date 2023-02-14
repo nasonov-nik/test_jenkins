@@ -15,12 +15,12 @@ pipeline {
                     def TASKS = []
 
                     if ( env.change_hostname ){
-                        println(env.change_hostname)
+                        assert env.change_hostname == true
                         TASKS.add("change_hostname")
                     }
 
-                    if ( env.get_hostname ){
-                        println(env.get_hostname)
+                    if ( env.get_hostname is true){
+                        assert env.get_hostname == true
                         TASKS.add("get_hostname")
                     }
 
