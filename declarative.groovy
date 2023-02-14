@@ -11,11 +11,10 @@ pipeline {
         stage("Обработка параметров"){
             steps{
                 script{
-//                    def STAND = env.TASK_TYPE
                     def TASKS = []
 
                     if ( env.change_hostname ){
-                        assert env.change_hostname == true
+                        echo env.change_hostname
                         TASKS.add("change_hostname")
                     }
 
