@@ -12,4 +12,4 @@ println(list[0])
 
 lol = true
 
-assert lol == true
+println(lol == false)
