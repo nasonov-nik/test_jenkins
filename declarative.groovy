@@ -11,7 +11,7 @@ pipeline {
         stage("Обработка параметров"){
             steps{
                 script{
-                    def STAND = env.TASK_TYPE
+//                    def STAND = env.TASK_TYPE
                     def TASKS = []
 
                     if (env.change_hostname){
@@ -30,8 +30,10 @@ pipeline {
                         TASKS.add("get_mem")
                     }
 
-                    println("тип задачи, ${STAND}")
-                    println("change_hostname, ${TASKS}")
+                    TASKS.each {
+                        print(it)
+
+                    }
                 }
             }
         }
@@ -41,20 +43,19 @@ pipeline {
 //            }
 //        }
 
-        stage("sh с сохранением") {
-                steps{
-                    withCredentials([sshUserPrivateKey(credentialsId: "osboxes", keyFileVariable: 'keyfile')]) {
-                        script {
-                            println(env.TASK)
-                            remote_host = sh (
-                                script: ' ssh -o StrictHostKeyChecking=no -i ${keyfile} root@192.168.59.102 \'hostnamectl set-hostname opensuse\'',
-                                returnStdout: true
-                            ).trim()
-                        println(remote_host)
-                    }
-                }
-            }
-        }
+//        stage("sh с сохранением") {
+//                steps{
+//                    withCredentials([sshUserPrivateKey(credentialsId: "osboxes", keyFileVariable: 'keyfile')]) {
+//                        script {
+//                            remote_host = sh (
+//                                script: ' ssh -o StrictHostKeyChecking=no -i ${keyfile} root@192.168.59.102 \'hostnamectl set-hostname opensuse\'',
+//                                returnStdout: true
+//                            ).trim()
+//                        println(remote_host)
+//                    }
+//                }
+//            }
+//        }
 
     }
 }
