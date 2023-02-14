@@ -16,7 +16,7 @@ pipeline {
                     if ( env.change_hostname ){
                         println(env.change_hostname)
                         println(env.change_hostname == true)
-                        println(env.change_hostname == false)
+                        println(env.change_hostname == "false")
                         TASKS.add("change_hostname")
                     }
 
