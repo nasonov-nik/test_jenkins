@@ -1,15 +1,4 @@
-import groovy.xml.MarkupBuilder
-/*
-def list = ["lol","pop","bob","sort","iops"]
+def runtime_props = [:]
+runtime_props.put('lol', [:])
 
-println(list)
-println(list.pop())
-println(list.pop())
-println(list.pop())
-println(list[0])
- */
-
-
-lol = true
-
-println(lol == false)
+println(runtime_props.lol)

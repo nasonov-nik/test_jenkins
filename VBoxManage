@@ -4,7 +4,8 @@ VBoxManage list vms
 2. проверить статус виртуальных машин
 VBoxManage list runningvms
 
-3. запуск виртуальной машины - VBoxManage startvm "{name_vm}" --type headless
+3. запуск виртуальной машины
+VBoxManage startvm "{name_vm}" --type headless
 
 4. Поставить на паузу виртуальную машину
 VBoxManage controlvm "{name_vm}" pause
