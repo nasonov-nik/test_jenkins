@@ -1,7 +1,7 @@
 node {
     environment {
-        test1=env.test1
-        test2=env.test2
+        test1=readYaml text: env.test1
+        test2=readYaml text: env.test2
     }
     stage("check host") {
         println(test1.getClass())
