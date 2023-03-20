@@ -1,6 +1,6 @@
 node {
     environment {
-        pwdEnv = pwd()
+        pwdEnv = $PWD
     }
     stage("check host") {
         println(pwdEnv)
