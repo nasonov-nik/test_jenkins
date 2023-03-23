@@ -18,7 +18,7 @@
 
 node {
 
-    stage(find){
+    stage("find"){
         sh "touch lol.yaml"
         lol = findFiles(glob: '**/*.yaml')
         println(lol)
