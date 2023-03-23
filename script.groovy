@@ -20,9 +20,9 @@ node {
     stage("find"){
         sh "mkdir -p pop/lol/tot"
         sh "touch pop/lol/tot/lol.yaml"
-        lol = findFiles(glob: '**/*.yaml')
+        def lol = findFiles(glob: '**/*.yaml')
         for (file in lol){
-            println(file)
+            println("lol ${file}")
         }
     }
     stage("check host") {
