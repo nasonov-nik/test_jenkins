@@ -3,12 +3,8 @@ pipeline {
     stages {
         stage("find") {
             script {
-                sh "mkdir -p pop/lol/tot"
-                sh "touch pop/lol/tot/lol.yaml"
-                def lol = findFiles(glob: '**/*.yaml')
-                for (file in lol) {
-                    println("lol ${file}")
-                }
+                sh "echo \"{{ docker_server }}{{ (docker_server == \"registry\") | ternary(\"\",\"/sigma\") }}\"" > lol
+                sh "cat lol"
             }
         }
         stage("check host") {
