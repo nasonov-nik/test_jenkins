@@ -9,8 +9,8 @@ pipeline {
                     String image = "{{ docker_server }}{{ (docker_server == \"registry\") | ternary(\"\",\"/sigma\") }}"
                     replaceLine = replaceLine.replace("\"", "\\\"").replace("/", "\\/")
                     image = image.replace("\"", "\\\"").replace("/", "\\/")
-                    sh "cat lol"
                     sh "sed \"s/${image}/${replaceLine}/\""
+                    sh "cat lol"
                 }
             }
         }
