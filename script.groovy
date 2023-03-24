@@ -1,12 +1,14 @@
+"s/database_name: [^ ]*/database_name: kartable_$ME" $PARAM_FILE
+
 pipeline {
     agent any
     stages {
         stage("find") {
             steps{
                 script {
-                    sh "echo \"{{ docker_server }}{{ (docker_server == \\\"registry.sigma.ru\\\") | ternary(\\\"\\\",\\\"/sigma\\\") }}:22.0.0\" > lol"
+                    sh "echo \"{{ docker_server }}{{ (docker_server == \\\"registry.sigma.ru\\\") | ternary(\\\"\\\",\\\"/sigma\\\") }}/js:22.0.0\" > lol"
                     String replaceLine = "{{ docker_serve }}/pop@null"
-                    String image = "{{ docker_server }}{{ (docker_server == \"registry.sigma.ru\") | ternary(\"\",\"/sigma\") }}:22.0.0"
+                    String image = "{{ docker_server }}{{ (docker_server == \"registry.sigma.ru\") | ternary(\"\",\"/sigma\") }}/js:22.0.0"
                     replaceLine = replaceLine.replace("\"", "\\\"").replace("/", "\\/")
                     image = image.replace("\"", "\\\"").replace("/", "\\/")
                     println(replaceLine)
