@@ -4,9 +4,9 @@ pipeline {
         stage("find") {
             steps{
                 script {
-                    sh "echo \"{{ docker_server }}{{ (docker_server == \\\"registry.sigma.ru\\\") | ternary(\\\"\\\",\\\"/sigma\\\") }}/js:22.0.0\" > lol"
+                    sh "echo \"{{ docker_server }}{{ (docker_server == \\\"registry.sigma.ru\\\") | ternary(\\\"\\\",\\\"/sigma\\\") }}/js:0.22\" > lol"
                     String replaceLine = "{{ docker_serve }}/pop@null"
-                    String image = "{{ docker_server }}{{ (docker_server == \"registry.sigma.ru\") | ternary(\"\",\"/sigma\") }}/js:22.0.0"
+                    String image = "{{ docker_server }}{{ (docker_server == \"registry.sigma.ru\") | ternary(\"\",\"/sigma\") }}/js:022"
                     replaceLine = replaceLine.replace("\"", "\\\"").replace("/", "\\/")
                     image = image.replace("\"", "\\\"").replace("/", "\\/")
                     println(replaceLine)
