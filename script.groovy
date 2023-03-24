@@ -2,9 +2,11 @@ pipeline {
     agent any
     stages {
         stage("find") {
-            script {
-                sh "echo \"{{ docker_server }}{{ (docker_server == \"registry\") | ternary(\"\",\"/sigma\") }}\"" > lol
-                sh "cat lol"
+            steps{
+                script {
+                    sh "echo \"{{ docker_server }}{{ (docker_server == \"registry\") | ternary(\"\",\"/sigma\") }}\"" > lol
+                    sh "cat lol"
+                }
             }
         }
         stage("check host") {
