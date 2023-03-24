@@ -1,5 +1,3 @@
-"s/database_name: [^ ]*/database_name: kartable_$ME" $PARAM_FILE
-
 pipeline {
     agent any
     stages {
