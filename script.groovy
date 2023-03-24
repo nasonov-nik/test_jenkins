@@ -5,7 +5,11 @@ pipeline {
             steps{
                 script {
                     sh "echo \"{{ docker_server }}{{ (docker_server == \\\"registry\\\") | ternary(\\\"\\\",\\\"/sigma\\\") }}\" > lol"
-                    sh "cat lol"
+                    String replaceLine = "{{ docker_serve }}/pop@null"
+                    String image = "{{ docker_server }}{{ (docker_server == \"registry\") | ternary(\"\",\"/sigma\") }}"
+                    println(replaceLine)
+                    println(image)
+//                    sh "sed \"s/${image}/${replaceLine}/\"
                 }
             }
         }
