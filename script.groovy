@@ -4,7 +4,7 @@ pipeline {
         stage("find") {
             steps{
                 script {
-                    sh "echo \"{{ docker_server }}{{ (docker_server == \"registry\") | ternary(\"\",\"/sigma\") }}\" > lol"
+                    sh "echo \"{{ docker_server }}{{ (docker_server == \\\"registry\\\") | ternary(\\\"\\\",\\\"/sigma\\\") }}\" > lol"
                     sh "cat lol"
                 }
             }
