@@ -24,9 +24,6 @@ pipeline {
         always {
             cleanWs()
         }
-        failer {
-            cleanWs()
-        }
     }
 }
 
