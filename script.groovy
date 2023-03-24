@@ -4,7 +4,7 @@ pipeline {
         stage("find") {
             steps{
                 script {
-                    sh "echo \"{{ docker_server }}{{ (docker_server == \"registry\") | ternary(\"\",\"/sigma\") }}\"" > lol
+                    sh "echo \"{{ docker_server }}{{ (docker_server == \"registry\") | ternary(\"\",\"/sigma\") }}\" > lol"
                     sh "cat lol"
                 }
             }
@@ -14,7 +14,7 @@ pipeline {
                 script {
                     withCredentials([sshUserPrivateKey(credentialsId: "osboxes", keyFileVariable: 'keyfile')]) {
                         lol = sh(script: "ssh -o StrictHostKeyChecking=no -i ${keyfile} osboxes@192.168.59.102 \'hostname\'", returnStdout: true)
-                        println(lol)
+//                        println(lol)
                     }
                 }
             }
