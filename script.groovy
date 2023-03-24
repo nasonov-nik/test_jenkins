@@ -4,7 +4,7 @@ pipeline {
         stage("find") {
             steps{
                 script {
-                    sh "echo \"{{ docker_server }}{{ (docker_server == \\\"registry\\\") | ternary(\\\"\\\",\\\"/sigma\\\") }}\" > lol"
+                    sh "echo \"{{ docker_server }}{{ (docker_server == \\\"registry\\\") | ternary(\\\"\\\",\\\"/sigma\\\") }}:22\" > lol"
                     String replaceLine = "{{ docker_serve }}/pop@null"
                     String image = "{{ docker_server }}{{ (docker_server == \"registry\") | ternary(\"\",\"/sigma\") }}"
                     replaceLine = replaceLine.replace("\"", "\\\"").replace("/", "\\/")
