@@ -7,7 +7,8 @@ pipeline {
                     println(env.workspace)
                     def yamlFiles = findFiles(glob: '**/*.y*ml')
                     yamlFiles.each{ yaml ->
-                        println("yaml")
+                        yaml.replace("lol", "pop")
+                        println(yaml)
                         println(yaml.getClass())
                         def lol = yaml.path
                         println("lol")
