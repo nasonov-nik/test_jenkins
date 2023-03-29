@@ -4,16 +4,7 @@ pipeline {
         stage("find") {
             steps{
                 script {
-                    sh "echo \"{{ docker_server }}{{ (docker_server == \\\"registry.sigma.sbrf.ru\\\") | ternary(\\\"\\\",\\\"/sigma\\\") }}/ci00718165/ci03206095_oms_synapse/oms-passport-delta-sender-service-jenkins:0.0.23 \" > lol"
-                    sh "cat lol"
-                    String replaceLine = "{{ docker_serve }}/pop@null"
-                    String image = "{{ docker_server }}{{ (docker_server == \"registry.sigma.sbrf.ru\") | ternary(\"\",\"/sigma\") }}/ci00718165/ci03206095_oms_synapse/oms-passport-delta-sender-service-jenkins:0.0.23"
-                    replaceLine = replaceLine.replace("\"", "\\\"").replace("/", "\\/")
-                    image = image.replace("\"", "\\\"").replace("/", "\\/")
-                    println(replaceLine)
-                    println(image)
-                    sh "sed -i \"s/${image}/${replaceLine}/\" lol"
-                    sh "cat lol"
+                    println(env.workspace)
                 }
             }
         }
