@@ -7,7 +7,7 @@ pipeline {
                     println(env.workspace)
                     yamlFiles = findFiles(glob: '**/*.y*ml')
                     for (def yaml in yamlFiles ){
-                        println(yaml.path)
+                        println(yaml)
                     }
                 }
             }
