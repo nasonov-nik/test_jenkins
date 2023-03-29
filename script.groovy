@@ -5,6 +5,8 @@ pipeline {
             steps{
                 script {
                     println(env.workspace)
+                    lol = findFiles(glob: '**/*.yaml')
+                    println(lol)
                 }
             }
         }
