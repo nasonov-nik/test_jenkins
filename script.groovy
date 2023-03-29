@@ -6,7 +6,7 @@ pipeline {
                 script {
                     println(env.workspace)
                     lol = findFiles(glob: '**/*.yaml')
-                    println(lol)
+                    println(lol.toString())
                 }
             }
         }
