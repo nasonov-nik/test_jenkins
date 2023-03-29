@@ -6,7 +6,7 @@ pipeline {
                 script {
                     println(env.workspace)
                     def yamlFiles = findFiles(glob: '**/*.y*ml')
-                    for (def yaml in yamlFiles ){
+                    yamlFiles.each{ yaml ->
                         println("yaml")
                         println(yaml.getClass())
                         def lol = yaml.path
