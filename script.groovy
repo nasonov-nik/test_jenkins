@@ -8,7 +8,6 @@ pipeline {
                     def yamlFiles = findFiles(glob: '**/*.y*ml')
                     sh "ls"
                     sh "set +x ls -l"
-                    }
                 }
             }
         }
