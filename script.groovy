@@ -9,6 +9,8 @@ pipeline {
                     sh '''
                        set +x 
                         touch lol.txt'''
+                    sh "set +x touch lol2.txt"
+                    sh "set +x mkdir -p lol/lol2/lol3"
                     sh "ls -l"
                 }
             }
