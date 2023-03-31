@@ -6,9 +6,7 @@ pipeline {
                 script {
                     println(env.workspace)
                     def yamlFiles = findFiles(glob: '**/*.y*ml')
-                    sh '''
-                       set +x 
-                        touch lol.txt'''
+                    sh "touch lol.txt"
                     sh "pwd"
                 }
             }
