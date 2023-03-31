@@ -7,7 +7,7 @@ pipeline {
                     println(env.workspace)
                     def yamlFiles = findFiles(glob: '**/*.y*ml')
                     sh "mkdir -p pop"
-                    sh "cp lol2.yaml pop"
+                    sh "set +x mv lol2.yaml pop"
                     sh "ls -l"
                 }
             }
