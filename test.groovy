@@ -1,8 +1,23 @@
-def lol = [name: "Jerry", age: 42, city: "New York"]
-def kek = [l1: "name", l2: "age"]
+#!/usr/bin/env groovy
 
+pipeline {
+    agent any
+    options {
+        skipStagesAfterUnstable()
+        timestamps()
+    }
 
-kek.each {x, y ->
-    println(x)
-
+    stages {
+        stage("Обработка параметров") {
+            steps {
+                script {
+                    def dirs
+                    dirs = sh(script: "find -type d")
+                    dirs.each {
+                        print(it)
+                    }
+                }
+            }
+        }
+    }
 }
