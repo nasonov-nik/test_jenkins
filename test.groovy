@@ -11,7 +11,7 @@ pipeline {
         stage("Обработка параметров") {
             steps {
                 script {
-                    def dirs
+                    def dirs = []
                     dirs = sh(script: "find -type d", returnStdout: true)
                     dirs.each {
                         print(it)
