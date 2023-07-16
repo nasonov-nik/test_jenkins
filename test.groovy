@@ -12,7 +12,7 @@ pipeline {
             steps {
                 script {
                     def dirs
-                    dirs = sh(script: "find -type d")
+                    dirs = sh(script: "find -type d", returnStdout: true)
                     dirs.each {
                         print(it)
                     }
