@@ -13,7 +13,7 @@ pipeline {
                 script {
                     def dirs = []
                     dirs_sh = sh(script: "find -type d", returnStdout: true).trim()
-                    dirs.append(dirs_sh)
+                    dirs.add(dirs_sh)
                     dirs.each {
                         print(it)
                     }
