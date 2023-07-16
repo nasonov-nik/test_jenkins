@@ -12,7 +12,8 @@ pipeline {
             steps {
                 script {
                     def dirs = []
-                    dirs = sh(script: "find -type d", returnStdout: true)
+                    dirs_sh = sh(script: "find -type d", returnStdout: true)
+                    dirs.append(dirs_sh)
                     dirs.each {
                         print(it)
                     }
