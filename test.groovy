@@ -15,7 +15,7 @@ pipeline {
                     def distrUrl = link.trim().replace('%26','&')
                     println(distrUrl)
 
-                    Strin pomUrl
+                    String pomUrl
                     def urlParties = []
 
                     if(distrUrl ==~ /(?i)(^http(s)?:\/\/.*nexus.*\.(ca|sigma|delta)\.sbrf\.ru(:\d+)?\/.*\.(zip|rar)$)/){
