@@ -11,7 +11,7 @@ pipeline {
         stage("Обработка параметров") {
             steps {
                 script {
-                    String link = "https://nexus-ci.delta.sbrf.ru/repository/maven-distr/CI04199620/CI04199620_oms-proxy-cib/1.21.17-SNAPSHOT/lol/CI04199620_oms-proxy-cib-1.21.17-20230717.111952-3-distrib.zip"
+                    String link = "https://nexus-ci.delta.sbrf.ru/repository/redirect?r=maven-distr&g=CI04199620&a=CI04199620_oms-proxy-cib&v=1.21.17-20230717.111952-3"
                     def distrUrl = link.trim().replace('%26','&')
                     println(distrUrl)
 
