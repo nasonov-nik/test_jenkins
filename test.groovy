@@ -15,14 +15,14 @@ pipeline {
                     def distrUrl = link.trim().replace('%26','&')
                     println(distrUrl)
 
-                    if(url ==~ /(?i)(^http(s)?:\/\/.*nexus.*\.(ca|sigma|delta)\.sbrf\.ru(:\d+)?\/.*\.(zip|rar)$)/){
-                        urlParties = url.split('/').collect()
+                    if(distrUrl ==~ /(?i)(^http(s)?:\/\/.*nexus.*\.(ca|sigma|delta)\.sbrf\.ru(:\d+)?\/.*\.(zip|rar)$)/){
+                        urlParties = distrUrl.split('/').collect()
                         // Собираем url к pom файлу
                         pomUrl = "${urlParties[0..-2].join('/')}/${urlParties[-3]}-${urlParties[-2]}.pom"
                     }
 
-                    if(url ==~ /(?i)(^http(s)?:\/\/.*nexus.*\.(ca|sigma|delta)\.sbrf\.ru(:\d+)?\/.*service\/local\/artifact\/maven\/.*&.*)/){
-                        urlParties = url.split('&').collect()
+                    if(distrUrl ==~ /(?i)(^http(s)?:\/\/.*nexus.*\.(ca|sigma|delta)\.sbrf\.ru(:\d+)?\/.*service\/local\/artifact\/maven\/.*&.*)/){
+                        urlParties = distrUrl.split('&').collect()
                         def parameters = [:]
                         def tmp
                         for(part in urlParties[1..-1]){
