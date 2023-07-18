@@ -22,25 +22,25 @@ pipeline {
                         urlParties = distrUrl.split('/').collect()
                         // Собираем url к pom файлу
                         pomUrl = "${urlParties[0..-2].join('/')}/${urlParties[-3]}-${urlParties[-2]}.pom"
-                        println("${urlParties[0..-2]}")
-                        println("${urlParties[-3]}")
-                        println("${urlParties[-2]}.pom")
+                        println("[0..-2] ${urlParties[0..-2]}")
+                        println("[3] ${urlParties[-3]}")
+                        println("[-2]${urlParties[-2]}.pom")
                         echo "1"
                     }
 
-                    if(distrUrl ==~ /(?i)(^http(s)?:\/\/.*nexus.*\.(ca|sigma|delta)\.sbrf\.ru(:\d+)?\/.*service\/local\/artifact\/maven\/.*&.*)/){
-                        urlParties = distrUrl.split('&').collect()
-                        def parameters = [:]
-                        def tmp
-                        for(part in urlParties[1..-1]){
-                            tmp = part.split('=')
-                            parameters."${tmp[0]}" = tmp[1]
-                        }
-
-                        // Собираем url к pom файлу
-                        pomUrl = "${urlParties[0]}&g=${parameters.g}&a=${parameters.a}&v=${parameters.v}&p=pom"
-                        echo "2"
-                    }
+//                     if(distrUrl ==~ /(?i)(^http(s)?:\/\/.*nexus.*\.(ca|sigma|delta)\.sbrf\.ru(:\d+)?\/.*service\/local\/artifact\/maven\/.*&.*)/){
+//                         urlParties = distrUrl.split('&').collect()
+//                         def parameters = [:]
+//                         def tmp
+//                         for(part in urlParties[1..-1]){
+//                             tmp = part.split('=')
+//                             parameters."${tmp[0]}" = tmp[1]
+//                         }
+//
+//                         // Собираем url к pom файлу
+//                         pomUrl = "${urlParties[0]}&g=${parameters.g}&a=${parameters.a}&v=${parameters.v}&p=pom"
+//                         echo "2"
+//                     }
                     echo "pomUrl"
                     println(pomUrl)
                 }
