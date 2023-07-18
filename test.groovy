@@ -22,7 +22,7 @@ pipeline {
                         urlParties = distrUrl.split('/').collect()
                         // Собираем url к pom файлу
                         pomUrl = "${urlParties[0..-2].join('/')}/${urlParties[-3]}-${urlParties[-2]}.pom"
-                        println("[0..-2] ${urlParties[0..-2]}")
+                        println("[0..-2] ${urlParties[0..-2].join('/')}")
                         println("[3] ${urlParties[-3]}")
                         println("[-2]${urlParties[-2]}.pom")
                         echo "1"
