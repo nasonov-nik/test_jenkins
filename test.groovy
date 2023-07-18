@@ -35,6 +35,7 @@ pipeline {
 
                         // Собираем url к pom файлу
                         pomUrl = "${urlParties[0]}&g=${parameters.g}&a=${parameters.a}&v=${parameters.v}&p=pom"
+                        println(urlParties)
                         println(pomUrl)
                     }
                 }
