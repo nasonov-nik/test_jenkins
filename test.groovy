@@ -17,7 +17,7 @@ pipeline {
                     def timeHours = new Date().getHours()
                     def timeMinutes = new Date().getMinutes()
                     def timeSeconds = new Date().getSeconds()
-                    def timeMilliseconds = .00+00:00
+                    def timeMilliseconds = '.00+00:00'
                     println([timeYear, timeMonth, timeDay, timeHours, timeMinutes, timeSeconds, timeMilliseconds])
                 }
             }
