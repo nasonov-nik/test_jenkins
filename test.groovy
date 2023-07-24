@@ -14,10 +14,11 @@ pipeline {
                     def timeYear = new Date().getYear() + 1900
                     def timeMonth = new Date().getMonth() + 1
                     def timeDay = new Date().getDate()
-                    def timeHoures = new Date().getHours()
+                    def timeHours = new Date().getHours()
                     def timeMinutes = new Date().getMinutes()
                     def timeSeconds = new Date().getSeconds()
-                    println([timeYear, timeMonth, timeDay])
+                    def timeMilliseconds = .00+00:00
+                    println([timeYear, timeMonth, timeDay, timeHours, timeMinutes, timeSeconds, timeMilliseconds])
                 }
             }
         }
