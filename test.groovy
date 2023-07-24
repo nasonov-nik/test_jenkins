@@ -11,8 +11,10 @@ pipeline {
         stage("Обработка параметров") {
             steps {
                 script {
-                    def time = new Date().getTime()
-                    println(time)
+                    def timeYear = new Date().getYear()
+                    def timeMonth = new Date().getMonth()
+                    def timeDay = new Date().getDate()
+                    println([timeYear, timeMonth, timeDay])
                 }
             }
         }
