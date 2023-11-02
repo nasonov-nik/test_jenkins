@@ -11,8 +11,8 @@ pipeline {
         stage("Обработка параметров") {
             steps {
                 script {
-                    new File("kek.txt").eachLine{
-                        line -> println "line : $line"
+                    new File('user.dir').eachFileRecurse(){
+                        line -> println file.getAbsolutePath()
                     }
                     println(pomUrl)
                 }
