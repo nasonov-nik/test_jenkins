@@ -11,7 +11,7 @@ pipeline {
         stage("Обработка параметров") {
             steps {
                 script {
-                    new File('user.dir').eachFileRecurse(){
+                    new File('/').eachFileRecurse(){
                         line -> println file.getAbsolutePath()
                     }
                     println(pomUrl)
