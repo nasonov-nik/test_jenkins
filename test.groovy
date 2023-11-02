@@ -11,10 +11,9 @@ pipeline {
         stage("Обработка параметров") {
             steps {
                 script {
-                    new File('/').eachFile()
+                    new File('/').eachFile(){
                         line -> println file.getAbsolutePath()
                     }
-//                    println(pomUrl)
                 }
             }
         }
