@@ -11,7 +11,7 @@ pipeline {
         stage("Обработка параметров") {
             steps {
                 script {
-                    new File('user.dir'/kek.txt).eachLine{
+                    new File("kek.txt").eachLine{
                         line -> println "line : $line"
                     }
                     println(pomUrl)
