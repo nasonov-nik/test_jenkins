@@ -11,11 +11,37 @@ pipeline {
         stage("Обработка параметров") {
             steps {
                 script {
-                    new File('/').eachFile(){
-                        line -> println file.getAbsolutePath()
+                    def bindingFile = readFile(file: 'env.env')
+                    def binding = [:]
+
+                    bindingFile.split(',').each { line ->
+                        println(line)
+                        lineSplit = line.split(':')
+                        binding.put(lineSplit[0]: lineSplit[1])
                     }
                 }
             }
         }
     }
 }
+
+
+//String renderTemplate(Map binding, String template) {
+//    return new groovy.text.SimpleTemplateEngine().createTemplate(template).make(binding).toString()
+//}
+//
+//    def binding = [
+//            dockerBuild: {
+//                true
+//            },
+//            version: 'v1',
+//            kind: 'Pod',
+//            labels:[
+//                    type: 'ephemeral-jenkins-agent',
+//                    pipeline: 'generic_pipeline'
+//            ]
+//    ]
+//
+//
+//
+//println renderTemplate(binding,template)
