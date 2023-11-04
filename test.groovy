@@ -18,7 +18,7 @@ pipeline {
                         println(line)
                         lineSplit = line.split(':')
                         println(lineSplit)
-                        binding.put(lineSplit[0]: lineSplit[1])
+                        binding.put(lineSplit[0].trim(): lineSplit[1].trim())
                     }
                 }
             }
