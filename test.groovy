@@ -68,7 +68,7 @@ pipeline {
                                             '''
 
                     String lol = renderTemplate(binding,template)
-                    println(string)
+                    println(lol)
                 }
             }
         }
