@@ -69,7 +69,7 @@ pipeline {
 
                     String lol = renderTemplate(binding,template)
                     println(lol)
-                    lol2 = groovy.text.SimpleTemplateEngine().createTemplate(template).make(binding).toString()
+                    def lol2 = groovy.text.SimpleTemplateEngine().createTemplate(template).make(binding).toString()
                     println(lol2)
 
                 }
