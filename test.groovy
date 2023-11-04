@@ -19,6 +19,7 @@ pipeline {
                         lineSplit = line.split(':')
                         binding['hosts'].put(lineSplit[0].trim(),  lineSplit[1].trim())
                     }
+                    println(binding)
                     template(binding, template)
                 }
             }
@@ -30,19 +31,3 @@ pipeline {
 String template(Map binding, String template) {
     return new groovy.text.SimpleTemplateEngine().createTemplate(template).make(binding).toString()
 }
-
-//
-//    def binding = [
-//            dockerBuild: {
-//                true
-//            },
-//            version: 'v1',
-//            kind: 'Pod',
-//            labels:[
-//                    type: 'ephemeral-jenkins-agent',
-//                    pipeline: 'generic_pipeline'
-//            ]
-//    ]
-//
-//
-//
