@@ -67,8 +67,8 @@ pipeline {
                                         <% } %>\
                                             '''
 
-                    println renderTemplate(binding,template)
-
+                    String lol = renderTemplate(binding,template)
+                    println(string)
                 }
             }
         }
