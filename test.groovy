@@ -18,6 +18,7 @@ pipeline {
                         lineSplit = line.split(':')
                         binding.put(lineSplit[0].trim(),  lineSplit[1].trim())
                     }
+                    println(binding)
                 }
             }
         }
