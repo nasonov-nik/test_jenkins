@@ -11,6 +11,7 @@ pipeline {
         stage("Обработка параметров") {
             steps {
                 script {
+                    String template = readFile(file: 'template.yaml')
                     def bindingFile = readFile(file: 'env.env')
                     def binding = [:]
 
@@ -18,7 +19,7 @@ pipeline {
                         lineSplit = line.split(':')
                         binding.put(lineSplit[0].trim(),  lineSplit[1].trim())
                     }
-                    println(binding)
+                    template(binding, template)
                 }
             }
         }
@@ -26,9 +27,10 @@ pipeline {
 }
 
 
-//String renderTemplate(Map binding, String template) {
-//    return new groovy.text.SimpleTemplateEngine().createTemplate(template).make(binding).toString()
-//}
+String template(Map binding, String template) {
+    return new groovy.text.SimpleTemplateEngine().createTemplate(template).make(binding).toString()
+}
+
 //
 //    def binding = [
 //            dockerBuild: {
@@ -44,4 +46,3 @@ pipeline {
 //
 //
 //
-//println renderTemplate(binding,template)
