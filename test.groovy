@@ -76,6 +76,6 @@ pipeline {
 }
 
 
-String template(Map binding, String template) {
+String renderTemplate(Map binding, String template) {
     return new groovy.text.SimpleTemplateEngine().createTemplate(template).make(binding).toString()
 }
