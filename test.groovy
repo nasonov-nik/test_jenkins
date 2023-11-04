@@ -15,9 +15,8 @@ pipeline {
                     def binding = [:]
 
                     bindingFile.split(',').each { line ->
-                        println(line)
                         lineSplit = line.split(':')
-                        println(lineSplit)
+                        println(Arrays.toString((lineSplit))
 //                        binding.put(lineSplit[0].trim(): lineSplit[1].trim())
                     }
                 }
