@@ -75,7 +75,7 @@ pipeline {
     }
 }
 
-
+@NonCPS
 String renderTemplate(Map binding, String template) {
     return new groovy.text.SimpleTemplateEngine().createTemplate(template).make(binding).toString()
 }
