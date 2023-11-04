@@ -2,7 +2,7 @@ apiVersion: ${version}
 kind: service
 metadata:
   labels:
-  <% for(label in labels){ %>
+  <% for(label in hosts){ %>
 ${label.key}: ${label.value}
   <% } %>
 spec:
