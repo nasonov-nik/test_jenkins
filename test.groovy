@@ -14,8 +14,8 @@ pipeline {
                     def bindingFile = readFile(file: 'env.env')
                     def binding = [:]
 
-                    bindingFile.split(',').each { line ->
-                        lineSplit = line.split(':')
+                    bindingFile.split(',').trim().each { line ->
+                        lineSplit = line.split(':').trim()
                         println(Arrays.toString(lineSplit))
 //                        binding.put(lineSplit[0].trim(): lineSplit[1].trim())
                     }
