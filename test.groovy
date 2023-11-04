@@ -13,11 +13,11 @@ pipeline {
                 script {
                     String template = readFile(file: 'template.yaml')
                     def bindingFile = readFile(file: 'env.env')
-                    def binding = [:]
+                    def binding = ['hosts':[:]]
 
                     bindingFile.split(',').each { line ->
                         lineSplit = line.split(':')
-                        binding.put(lineSplit[0].trim(),  lineSplit[1].trim())
+                        binding['hosts'].put(lineSplit[0].trim(),  lineSplit[1].trim())
                     }
                     template(binding, template)
                 }
