@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage("Обработка параметров") {
             steps {
-                script {
+//                script {
 
 //                    String template = readFile(file: 'template.yaml')
 //                    def bindingFile = readFile(file: 'env.env')
@@ -70,8 +70,7 @@ pipeline {
                     @NonCPS
                     def lol = renderTemplate(binding,template)
                     println(lol)
-
-                }
+//                }
             }
         }
     }
