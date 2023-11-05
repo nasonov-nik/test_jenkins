@@ -68,8 +68,8 @@ pipeline {
                                         <% } %>\
                                             '''
 
-//                    String lol = renderTemplate(binding,template)
-
+                    String lol = renderTemplate(binding,template)
+                    println("Вызов за пределами функции")
 
                 }
             }
@@ -80,8 +80,9 @@ pipeline {
 @NonCPS
 def renderTemplate(Map binding, String template){
     def engine = new groovy.text.SimpleTemplateEngine()
-    String lol = engine.createTemplate(template).make(binding)
-    println(lol)
+    String resutl = engine.createTemplate(template).make(binding)
+    println("Вывод внутри функции ${resutl}")
+    return resutl
 }
 
 //@NonCPS
