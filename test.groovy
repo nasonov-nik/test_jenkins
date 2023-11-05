@@ -68,7 +68,7 @@ pipeline {
                                         <% } %>\
                                             '''
 
-                    String lol = renderTemplate(binding,template)
+                    def lol = renderTemplate(binding,template)
                     println("Вызов за пределами функции")
 
                 }
