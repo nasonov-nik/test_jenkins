@@ -68,12 +68,7 @@ pipeline {
                                         <% } %>\
                                             '''
 
-//                    def lol = renderTemplate(binding,template)
-                    @NonCPS
-                    def engine = new groovy.text.GStringTemplateEngine()
-                    def template2 = engine.createTemplate(template).make(binding)
-                    println(template2)
-                    def lol = template2.toString()
+                    def lol = renderTemplate(binding,template)
                     println(lol)
                 }
             }
@@ -81,13 +76,13 @@ pipeline {
     }
 }
 
-//@NonCPS
-//def renderTemplate(Map binding, String template){
-//    def engine = new groovy.text.SimpleTemplateEngine()
-//    def resutl = engine.createTemplate(template).make(binding)
-//    println("Вывод внутри функции ${resutl}")
-//    return resutl
-//}
+def renderTemplate(Map binding, String template){
+    @NonCPS
+    def engine = new groovy.text.GStringTemplateEngine()
+    def resutl = engine.createTemplate(template).make(binding).toString()
+    println("Вывод внутри функции ${resutl}")
+    return resutl
+}
 
 //def renderTemplate(Map binding, String template) {
 //    def engie = new groovy.text.SimpleTemplateEngine()
