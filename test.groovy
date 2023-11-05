@@ -77,15 +77,16 @@ pipeline {
     }
 }
 
-@NonCPS
-def renderTemplate(Map binding, String template){
-    def engine = new groovy.text.SimpleTemplateEngine()
-    def resutl = engine.createTemplate(template).make(binding)
-    println("Вывод внутри функции ${resutl}")
-    return resutl
-}
-
 //@NonCPS
-//def renderTemplate(Map binding, String template) {
-//    return new groovy.text.SimpleTemplateEngine().createTemplate(template).make(binding).toString()
+//def renderTemplate(Map binding, String template){
+//    def engine = new groovy.text.SimpleTemplateEngine()
+//    def resutl = engine.createTemplate(template).make(binding)
+//    println("Вывод внутри функции ${resutl}")
+//    return resutl
 //}
+
+
+def renderTemplate(Map binding, String template) {
+    @NonCPS
+    return new groovy.text.SimpleTemplateEngine().createTemplate(template).make(binding).toString()
+}
