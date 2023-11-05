@@ -67,7 +67,7 @@ pipeline {
                                           volumes: {}
                                         <% } %>\
                                             '''
-
+                    @NonCPS
                     def lol = renderTemplate(binding,template)
                     println(lol)
 
