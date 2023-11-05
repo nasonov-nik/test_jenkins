@@ -11,15 +11,16 @@ pipeline {
         stage("Обработка параметров") {
             steps {
                 script {
-//                    String template = readFile(file: 'template.yaml')
-//                    def bindingFile = readFile(file: 'env.env')
-//                    def binding = ['hosts':[:]]
-//
-//                    bindingFile.split(',').each { line ->
-//                        lineSplit = line.split(':')
-//                        binding['hosts'].put(lineSplit[0].trim(),  lineSplit[1].trim())
-//                    }
-//                    println(binding)
+
+                    String template = readFile(file: 'template.yaml')
+                    def bindingFile = readFile(file: 'env.env')
+                    def binding = ['hosts':[:]]
+
+                    bindingFile.split(',').each { line ->
+                        lineSplit = line.split(':')
+                        binding['hosts'].put(lineSplit[0].trim(),  lineSplit[1].trim())
+                    }
+                    println(binding)
 
 
                     def binding = [
