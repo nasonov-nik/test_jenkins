@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage("Обработка параметров") {
             steps {
-//                script {
+                script {
 
 //                    String template = readFile(file: 'template.yaml')
 //                    def bindingFile = readFile(file: 'env.env')
@@ -67,9 +67,14 @@ pipeline {
                                           volumes: {}
                                         <% } %>\
                                             '''
-                    def lol = renderTemplate(binding,template)
+
+//                    def lol = renderTemplate(binding,template)
+                    def engine = new groovy.text.SimpleTemplateEngine()
+                    def template2 = engine.createTemplate(text).make(binding)
+                    @NonCPS
+                    def lol = template2.toString()
                     println(lol)
-//                }
+                }
             }
         }
     }
@@ -83,8 +88,8 @@ pipeline {
 //    return resutl
 //}
 
-def renderTemplate(Map binding, String template) {
-    def engie = new groovy.text.SimpleTemplateEngine()
-    def result = engie.createTemplate(template).make(binding)
-    return result
-}
+//def renderTemplate(Map binding, String template) {
+//    def engie = new groovy.text.SimpleTemplateEngine()
+//    def result = engie.createTemplate(template).make(binding)
+//    return result
+//}
