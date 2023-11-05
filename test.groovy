@@ -69,7 +69,6 @@ pipeline {
                                             '''
 
                     def lol = renderTemplate(binding,template)
-                    @NonCPS
                     println(lol)
 
                 }
@@ -86,7 +85,7 @@ pipeline {
 //    return resutl
 //}
 
-
+@NonCPS
 def renderTemplate(Map binding, String template) {
     return new groovy.text.SimpleTemplateEngine().createTemplate(template).make(binding)
 }
