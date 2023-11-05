@@ -69,7 +69,7 @@ pipeline {
                                             '''
 
                     def lol = renderTemplate(binding,template)
-                    println("Вызов за пределами функции")
+                    println(lol)
 
                 }
             }
