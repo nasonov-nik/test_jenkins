@@ -70,7 +70,7 @@ pipeline {
 
 //                    def lol = renderTemplate(binding,template)
                     def engine = new groovy.text.SimpleTemplateEngine()
-                    def template2 = engine.createTemplate(text).make(binding)
+                    def template2 = engine.createTemplate(template).make(binding)
                     println(template2)
                     @NonCPS
                     def lol = template2.toString()
