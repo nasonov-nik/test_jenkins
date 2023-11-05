@@ -80,7 +80,7 @@ pipeline {
 @NonCPS
 def renderTemplate(Map binding, String template){
     def engine = new groovy.text.SimpleTemplateEngine()
-    String resutl = engine.createTemplate(template).make(binding)
+    def resutl = engine.createTemplate(template).make(binding)
     println("Вывод внутри функции ${resutl}")
     return resutl
 }
