@@ -87,5 +87,7 @@ pipeline {
 
 @NonCPS
 def renderTemplate(Map binding, String template) {
-    return new groovy.text.SimpleTemplateEngine().createTemplate(template).make(binding)
+    def engie = new groovy.text.SimpleTemplateEngine()
+    def result = engie.createTemplate(template).make(binding)
+    return result
 }
