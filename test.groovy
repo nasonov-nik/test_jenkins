@@ -70,11 +70,11 @@ pipeline {
 
 //                    String lol = renderTemplate(binding,template)
 
+                    @NonCPS
                     def engine = new groovy.text.SimpleTemplateEngine()
+                    @NonCPS
                     def lol = engine.createTemplate(template).make(binding)
-
                     println(lol)
-
                 }
             }
         }
