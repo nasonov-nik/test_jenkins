@@ -69,6 +69,7 @@ pipeline {
                                             '''
 
                     def lol = renderTemplate(binding,template)
+                    @NonCPS
                     println(lol)
 
                 }
