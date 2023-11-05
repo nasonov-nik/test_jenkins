@@ -12,15 +12,15 @@ pipeline {
             steps {
                 script {
 
-                    String template = readFile(file: 'template.yaml')
-                    def bindingFile = readFile(file: 'env.env')
-                    def binding = ['hosts':[:]]
-
-                    bindingFile.split(',').each { line ->
-                        lineSplit = line.split(':')
-                        binding['hosts'].put(lineSplit[0].trim(),  lineSplit[1].trim())
-                    }
-                    println(binding)
+//                    String template = readFile(file: 'template.yaml')
+//                    def bindingFile = readFile(file: 'env.env')
+//                    def binding = ['hosts':[:]]
+//
+//                    bindingFile.split(',').each { line ->
+//                        lineSplit = line.split(':')
+//                        binding['hosts'].put(lineSplit[0].trim(),  lineSplit[1].trim())
+//                    }
+//                    println(binding)
 
 
                     def binding = [
@@ -81,7 +81,7 @@ pipeline {
     }
 }
 
-@NonCPS
-def renderTemplate(Map binding, String template) {
-    return new groovy.text.SimpleTemplateEngine().createTemplate(template).make(binding).toString()
-}
+//@NonCPS
+//def renderTemplate(Map binding, String template) {
+//    return new groovy.text.SimpleTemplateEngine().createTemplate(template).make(binding).toString()
+//}
