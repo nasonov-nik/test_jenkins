@@ -67,10 +67,12 @@ pipeline {
                                         <% } %>\
                                             '''
 
-                    String lol = renderTemplate(binding,template)
+//                    String lol = renderTemplate(binding,template)
+
+                    def engine = new groovy.text.SimpleTemplateEngine()
+                    def lol = engine.createTemplate(text).make(binding)
+
                     println(lol)
-                    def lol2 = groovy.text.SimpleTemplateEngine().createTemplate(template).make(binding).toString()
-                    println(lol2)
 
                 }
             }
